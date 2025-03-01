@@ -17,8 +17,17 @@ Streamline the game mastering experience by providing:
 - **Backend**: Next.js API Routes
 - **Database**: PostgreSQL with Prisma
 - **Deployment**: Vercel
+- **Containerization**: Docker
 
 ## 📦 Installation
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm or yarn
+- Docker (recommended for database management)
+
+### Setup Steps
 
 ```bash
 # Clone the project
@@ -31,7 +40,7 @@ npm install
 # Set up environment variables
 cp .env.example .env.local
 
-# Start the database (if needed)
+# Start PostgreSQL database with Docker
 docker-compose up -d
 
 # Run Prisma migrations
@@ -39,6 +48,27 @@ npx prisma migrate dev
 
 # Start development server
 npm run dev
+```
+
+### Docker Configuration
+
+#### Services
+- **PostgreSQL**: Database storage on port 5432
+- **PgAdmin**: Database management interface on port 5050
+
+#### Useful Docker Commands
+```bash
+# Start services
+docker-compose up -d
+
+# Stop services
+docker-compose down
+
+# View running containers
+docker-compose ps
+
+# View logs
+docker-compose logs postgres
 ```
 
 ## 🚀 Project Status

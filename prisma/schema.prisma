@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  status    String   // "setup", "active", "finished"
+  phase     String   // "day", "night"
+  players   Player[]
+}
+
+model Player {
+  id      String  @id @default(uuid())
+  name    String
+  roleId  String
+  isAlive Boolean @default(true)
+  gameId  String
+  game    Game    @relation(fields: [gameId], references: [id])
+}
+
+model Role {
+  id            String  @id @default(uuid())
+  name          String
+  description   String
+  team          String  // "villager", "werewolf", "special"
+  hasNightAction Boolean @default(false)
+}
