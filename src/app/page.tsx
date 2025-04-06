@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,6 +6,8 @@ export default function Home() {
   return (
     <div className="w-full p-8 flex flex-col items-center justify-center min-h-screen bg-red-800">
       
+      <Navbar />
+
       <main className="w-full max-w-lg flex flex-col items-center space-y-12">
         
         <div className="flex flex-col items-center space-y-8">
